@@ -12,6 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Inherit Superior art options
+include vendor/superior/config/art.mk
+
 PRODUCT_BRAND ?= SuperiorOS
 
 # Backup Tool
@@ -46,11 +49,6 @@ PRODUCT_COPY_FILES += \
 # Enable wireless Xbox 360 controller support
 PRODUCT_COPY_FILES += \
     frameworks/base/data/keyboards/Vendor_045e_Product_028e.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/Vendor_045e_Product_0719.kl
-
-# Dex preopt
-PRODUCT_DEXPREOPT_SPEED_APPS += \
-    SystemUI \
-    Launcher3QuickStep
 
 # Don't compile SystemUITests
 EXCLUDE_SYSTEMUI_TESTS := true
