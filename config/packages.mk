@@ -144,3 +144,8 @@ ifeq ($(TARGET_WANTS_FOD_ANIMATIONS),true)
 PRODUCT_PACKAGES += \
     FodAnimationResources
 endif
+
+#OmniJaws
+PRODUCT_PACKAGES += \
+    OmniJaws \
+    WeatherIcons
