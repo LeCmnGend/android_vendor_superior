@@ -93,6 +93,10 @@ DEVICE_PACKAGE_OVERLAYS += vendor/superior/overlay/common
 #Telephony
 $(call inherit-product, vendor/superior/config/telephony.mk)
 
+# Substratum Key
+PRODUCT_COPY_FILES += \
+    vendor/superior/prebuilt/google/apk/SubstratumKey.apk:system/priv-app/SubstratumKey/SubstratumKey.apk
+
 # Packages
 include vendor/superior/config/packages.mk
 
