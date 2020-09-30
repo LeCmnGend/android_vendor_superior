@@ -16,6 +16,7 @@
      limitations under the License.
 -->
 <resources>
+    <string name="launcher_overlayable_package" translatable="false">com.android.launcher3</string>
 
     <!-- List of packages whose icons are used to preview the icon shape for a theme. These are
         typically GMS apps so they should be available in GMS devices. -->
@@ -34,6 +35,7 @@
         <item>com.android.dialer</item>
     </array>
 
-    <string name="themes_stub_package">com.google.android.apps.customization.pixel</string>
+    <string name="themes_stub_package">com.android.customization</string>
+    <string name="clocks_stub_package" translatable="false">com.android.customization</string>
 
 </resources>
