@@ -139,3 +139,8 @@ PRODUCT_PACKAGES += \
     SwitchRetro \
     SwitchMD2 \
     SwitchOOS
+
+ifeq ($(TARGET_WANTS_FOD_ANIMATIONS),true)
+PRODUCT_PACKAGES += \
+    FodAnimationResources
+endif
