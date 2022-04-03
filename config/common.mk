@@ -91,6 +91,10 @@ PRODUCT_DEXPREOPT_SPEED_APPS += \
 
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/superior/overlay
 
+# Translations
+PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/crowdin/overlay
+PRODUCT_PACKAGE_OVERLAYS += vendor/crowdin/overlay
+
 # Device Overlays
 DEVICE_PACKAGE_OVERLAYS += vendor/superior/overlay/common
 
