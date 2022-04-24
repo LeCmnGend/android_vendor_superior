@@ -23,4 +23,12 @@
 
     <!-- Default setting for Settings.Global.MOBILE_DATA_ALWAYS_ON -->
     <bool name="def_mobile_data_always_on">false</bool>
+
+    <integer name="def_screen_off_timeout">30000</integer>
+
+    <bool name="def_screen_brightness_automatic_mode">true</bool>
+
+    <!-- Default for Settings.System.VIBRATE_WHEN_RINGING -->
+    <bool name="def_vibrate_when_ringing">true</bool>
+
 </resources>
