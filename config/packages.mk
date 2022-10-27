@@ -38,11 +38,9 @@ PRODUCT_PACKAGES += \
     messaging \
     PixelThemesStub \
     QuickAccessWallet \
-    Stk \
     StitchImage \
     Superiorwalls \
-    ThemePicker \
-    ViaBrowser
+    ThemePicker
 
 # Face Unlock
 TARGET_FACE_UNLOCK_SUPPORTED ?= true
