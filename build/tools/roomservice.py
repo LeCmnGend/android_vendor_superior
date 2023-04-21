@@ -16,6 +16,7 @@
 # limitations under the License.
 
 import base64
+import glob
 import json
 import netrc
 import os
@@ -96,13 +97,62 @@ def get_manifest_path():
     except IndexError:
         return ".repo/manifests/{}".format(m.find("include").get("name"))
 
+def get_from_manifest(devicename):
+    for path in glob.glob(".repo/local_manifests/*.xml"):
+        try:
+            lm = ElementTree.parse(path)
+            lm = lm.getroot()
+        except:
+            lm = ElementTree.Element("manifest")
+
+        for localpath in lm.findall("project"):
+            if re.search("android_device_.*_%s$" % device, localpath.get("name")):
+                return localpath.get("path")
+
+    return None
+
+def is_in_manifest(projectpath):
+    for path in glob.glob(".repo/local_manifests/*.xml"):
+        try:
+            lm = ElementTree.parse(path)
+            lm = lm.getroot()
+        except:
+            lm = ElementTree.Element("manifest")
+
+        for localpath in lm.findall("project"):
+            if localpath.get("path") == projectpath:
+                return True
+
+    # Search in main manifest, too
+    try:
+        lm = ElementTree.parse(get_manifest_path())
+        lm = lm.getroot()
+    except:
+        lm = ElementTree.Element("manifest")
+
+    for localpath in lm.findall("project"):
+        if localpath.get("path") == projectpath:
+            return True
+
+    # ... and don't forget the lineage snippet
+    try:
+        lm = ElementTree.parse(".repo/manifests/snippets/lineage.xml")
+        lm = lm.getroot()
+    except:
+        lm = ElementTree.Element("manifest")
+
+    for localpath in lm.findall("project"):
+        if localpath.get("path") == projectpath:
+            return True
+
+    return False
+
 def load_manifest(manifest):
     try:
         man = ElementTree.parse(manifest).getroot()
     except (IOError, ElementTree.ParseError):
         man = ElementTree.Element("manifest")
     return man
-
 
 def get_default(manifest=None):
     m = manifest or load_manifest(get_manifest_path())
@@ -131,7 +181,6 @@ def get_from_manifest(device_name):
             if lp.startswith("device/") and lp.endswith("/" + device_name):
                 return lp
     return None
-
 
 def is_in_manifest(project_path):
     for local_path in load_manifest(custom_local_manifest).findall("project"):
